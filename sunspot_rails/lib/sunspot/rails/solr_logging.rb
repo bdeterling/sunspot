@@ -4,7 +4,7 @@ module Sunspot
 
       class <<self
         def included(base)
-          base.alias_method_chain :execute, :rails_logging
+          base.alias_method :execute, :rails_logging
         end
       end
 
