@@ -35,6 +35,9 @@ module Sunspot
           if @options[:require_field_match]
             params.merge!(make_params('requireFieldMatch', 'true'))
           end
+        elsif @options.member?(:phrase_highlighter)
+          # Default is true so adding a way to set it to false
+          params.merge!(make_params('usePhraseHighlighter', 'false'))
         end
         if formatter = @options[:formatter]
           params.merge!(make_params('formatter', formatter))
