@@ -37,7 +37,8 @@ module Sunspot
           end
         elsif @options.member?(:phrase_highlighter)
           # Default is true so adding a way to set it to false
-          params.merge!(make_params('usePhraseHighlighter', 'false'))          
+          # Not sure how to set it per field so it's all or nothing
+          params.merge!({ :"hl.usePhraseHighlighter" => false })       
         end
         if formatter = @options[:formatter]
           params.merge!(make_params('formatter', formatter))
